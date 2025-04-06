@@ -35,7 +35,7 @@ connectDB()
       resave: false,
       saveUninitialized: false,
       store: MongoStore.create({
-        mongoUrl: process.env.MONGO_URI, // ← replace this
+        mongoUrl: process.env.ATLAS_URL, // ← replace this
         collectionName: 'sessions',
       }),
       cookie: {
