@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Load correct DB based on environment
-const dburl = process.env.NODE_ENV === "development" ? process.env.ATLAS_URL : process.env.MONGO_URI;
+const dburl = process.env.NODE_ENV === "production" ? process.env.ATLAS_URL : process.env.MONGO_URI;
 
 async function main() {
   if (!dburl) {
