@@ -16,7 +16,9 @@ const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1); // if deployed behind proxy
+}
 
 // // Models & Routes
 const User = require("./models/user");
