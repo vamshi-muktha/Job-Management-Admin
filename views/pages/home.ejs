@@ -1,0 +1,159 @@
+<% layout('layout/boilerplate') %>
+
+<body>
+  <section class="container my-5">
+    <div class="row g-4">
+      <% jobs.forEach(job => { %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="job-card card shadow-sm p-3 rounded-4 h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <img src="<%= job.tlogo || '/assets/amazon-logo.png' %>"
+              alt="Logo"
+              style="width: 80px; height: 80px;"
+              onerror="this.onerror=null;this.src='/assets/amazon-logo.png';">
+
+            <span class="hour-badge badge text-black"><%= job.postedAgo ||
+              '24h Ago' %></span>
+          </div>
+          <h6 class="fw-bold mb-2"><%= job.title %></h6>
+          <div class="card-info text-muted small mb-2">
+            <p><i class="fa-solid fa-user-tie me-1"></i><%= job.experience
+              %></p>
+            <p><i class="fa-solid fa-location-dot me-1"></i><%= job.location
+              %></p>
+            <p><i class="fa-solid fa-sack-dollar me-1"></i><%= job.salaryMax
+              %></p>
+          </div>
+          <ul class="text-muted small ps-3 mb-3">
+            <% job.description && job.description.split('.').forEach(sentence =>
+            {
+            if (sentence.trim().length > 0) { %>
+            <li><%= sentence.trim() %>.</li>
+            <% } }) %>
+          </ul>
+
+          <a href="/<%= job._id %>/apply" class="btn apply-btn w-100">Apply Now</a>
+
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <div id="createJobModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 class="modal-title">Create Job Opening</h2>
+      <form action="/create" method="post" id="jobForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="f-label">Job Title</label>
+            <input type="text" name="title" placeholder="Full Stack Developer"
+              class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="f-label">Company Name</label>
+            <input type="text" name="company"
+              placeholder="Amazon, Microsoft, Swiggy" class="form-input" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="f-label">Location</label>
+            <input type="text" name="location"
+              placeholder="Choose Preferred Location" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="f-label">Job Type</label>
+            <select class="form-input" name="jobType">
+              <option>FullTime</option>
+              <option>PartTime</option>
+              <option>Internship</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="f-label">Salary Range</label>
+            <div class="salary-range">
+              <input type="text" name="salaryMin" placeholder="₹ 0"
+                class="form-input" />
+              <input type="text" name="salaryMax" placeholder="₹ 12,00,000"
+                class="form-input" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="f-label">Application Deadline</label>
+            <input type="date" name="deadline" class="form-input"
+              onfocus="this.showPicker()" />
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label class="f-label">Job Description</label>
+          <textarea name="description"
+            placeholder="Please share a description to let the candidate know more about the job role"
+            rows="4" class="form-input"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-draft">Save Draft</button>
+          <button type="submit" class="btn-publish">Publish ➤</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="findJobsPopup" class="custom-popup hidden">
+    <div class="popup-content rounded-4 shadow p-4 bg-white">
+      <h5 class="mb-3">Search for jobs by company</h5>
+      <form action="/searchbycompany" method="GET">
+        <input type="text" name="company" class="form-control mb-3"
+          placeholder="Search here..." required />
+        <div class="d-flex justify-content-end gap-2">
+          <button type="button" class="btn btn-secondary"
+            id="closePopupBtn">Close</button>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('createJobModal');
+    const createJobBtn = document.getElementById('createJobButton'); 
+  
+    createJobBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+    });
+  
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+  </script>
+
+  <script>
+    const popup = document.getElementById("findJobsPopup");
+    const openBtn = document.getElementById("findJobsPopupBtn");
+    const closeBtn = document.getElementById("closePopupBtn");
+  
+    openBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      popup.classList.remove("hidden");
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      popup.classList.add("hidden");
+    });
+  
+    window.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        popup.classList.add("hidden");
+      }
+    });
+  </script>
+  
+
+</body>

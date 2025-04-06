@@ -1,0 +1,207 @@
+
+<div class="top-sec">
+  <div class="d-flex justify-content-center">
+    <nav class="nav-main navbar navbar-light bg-light px-4">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+          <img class="logo" src="/assets/website-logo.png" alt="Logo">
+        </a>
+
+        <!-- Nav Items -->
+        <div class="nav-items d-flex align-items-center gap-6">
+          <a class="nav-link" href="/">Home</a>
+          <!-- <a class="nav-link" href="#">Find Jobs</a> -->
+          <a href="#" id="findJobsPopupBtn" class="nav-link">Find Jobs</a>
+
+          <a href="#" id="findTalentsBtn" class="nav-link">Find Talents</a>
+
+          <a class="nav-link" href="/aboutus">About Us</a>
+          <a class="nav-link" href="/testimonials">Testimonials</a>
+          <% if (user) { %>
+          <!-- Create Job Button -->
+          <button id="createJobButton" class="create-btn btn btn-primary">Create
+            Jobs</button>
+          <% } %>
+
+        </nav>
+        <!-- Login Section -->
+        <!-- Auth Section -->
+        <section class="login-box auth-section py-3 ">
+          <div class="container text-end">
+            <% if (user) { %>
+            <form action="/logout" method="POST" style="display: inline;">
+              <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+            <% } else { %>
+            <a href="/login" class="btn btn-outline-primary me-3">Login</a>
+            <a href="/signup" class="btn btn-outline-primary">Sign Up</a>
+            <% } %>
+          </div>
+        </section>
+
+        <% if (user) { %>
+        <a type="button" class="my-jobs btn btn-outline-success" href="/my-jobs"
+          class="nav-link">My Jobs</a>
+        <% } %>
+
+      </div>
+      <% const minVal = typeof min !== "undefined" ? min : 1; %>
+      <% const maxVal = typeof max !== "undefined" ? max : 15; %>
+      <section class="nav-section py-3">
+        <div class="container-fluid">
+          <div
+            class="row text-center align-items-center justify-content-center g-0">
+            <!-- Part 1: Search by Job Title -->
+
+            <div
+              class="col d-flex align-items-center justify-content-center px-3">
+
+              <i class="fas fa-search me-2"></i>
+              <form action="/searchbytitle" mehtod="get">
+                <input name="title" type="text"
+                  class="inp form-control border-0"
+                  placeholder="Search by Job Title, Role">
+              </form>
+            </div>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Part 2: Location -->
+            <div
+              class="col d-flex align-items-center justify-content-center px-3">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              <form action="/searchbylocation" method="get">
+              <input name = "location" type="text" class="inp form-control border-0"
+                placeholder="Preferred Location">
+              </form>
+            </div>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Part 3: Job Type -->
+            <div class="col d-flex align-items-center justify-content-center px-3">
+              <i class="fas fa-briefcase me-2"></i>
+              <form action="/searchbyjobtype" method="get">
+                <select name="jobtype" class="inp form-select border-0" onchange="this.form.submit()">
+                  <option disabled selected>Select Job Type</option>
+                  <option value="Full-time">Full-time</option>
+                  <option value="Part-time">Part-time</option>
+                  <option value="Internship">Internship</option>
+                </select>
+              </form>
+            </div>
+            
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Part 4: Salary Range -->
+            <!-- <div class="col d-flex flex-column align-items-center">
+              <label id="salaryRangeText" class="mb-2 fw-medium">Salary Range:
+                ₹30,000 - ₹150,000</label>
+              <div id="salarySlider" style="width: 200px;"></div>
+            </div> -->
+
+
+            <div class="col d-flex flex-column align-items-center">
+              <label id="salaryRangeText" class="mb-2 fw-medium">
+                Salary Range: ₹<span id="minSalary"><%= minVal %>lpa</span> - ₹<span id="maxSalary"><%= maxVal %>lpa</span>
+              </label>
+              
+              <form id="salaryForm" action="/searchbysalary" method="get">
+                
+                <input type="hidden" name="min" id="minSalaryInput" value="3">
+                <input type="hidden" name="max" id="maxSalaryInput" value="15">
+                
+              </form>
+              <div id="salarySlider" style="width: 200px;"></div>
+            </div>
+            
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <!-- <script>
+    const salarySlider = document.getElementById('salarySlider');
+    const salaryText = document.getElementById('salaryRangeText');
+  
+    noUiSlider.create(salarySlider, {
+      start: [30000, 150000],
+      connect: true,
+      step: 1000,
+      range: {
+        'min': 10000,
+        'max': 2000000
+      },
+      format: {
+        to: value => Math.round(value),
+        from: value => Number(value)
+      }
+    });
+  
+    salarySlider.noUiSlider.on('update', function (values) {
+      salaryText.innerText = `Salary Range: ₹${parseInt(values[0]).toLocaleString()} - ₹${parseInt(values[1]).toLocaleString()}`;
+    });
+  </script> -->
+<!--  -->
+  <!-- <script>
+    $(function () {
+      $("#salarySlider").slider({
+        range: true,
+        min: 1,
+        max: 20,
+        step: 0.5,
+        values: [1, 15],
+        slide: function (event, ui) {
+          $("#minSalary").text(ui.values[0]);
+          $("#maxSalary").text(ui.values[1]);
+          $("#minSalaryInput").val(ui.values[0]);
+          $("#maxSalaryInput").val(ui.values[1]);
+        },
+        change: function () {
+          $("#salaryForm").submit();
+        }
+      });
+    });
+  </script> -->
+
+
+
+<script>
+  $(function () {
+    const min = parseFloat("<%= minVal %>");
+    const max = parseFloat("<%= maxVal %>");
+
+    $("#salarySlider").slider({
+      range: true,
+      min: 1,
+      max: 20,
+      step: 0.5,
+      values: [min, max],
+      slide: function (event, ui) {
+        $("#minSalary").text(ui.values[0] + "lpa");
+        $("#maxSalary").text(ui.values[1] + "lpa");
+        $("#minSalaryInput").val(ui.values[0]);
+        $("#maxSalaryInput").val(ui.values[1]);
+      },
+      change: function () {
+        $("#salaryForm").submit();
+      }
+    });
+  });
+</script>
+
+
+    <script>
+    const findTalentsBtn = document.getElementById("findTalentsBtn");
+  
+    findTalentsBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("🚧 This feature is still under development!");
+    });
+  </script>

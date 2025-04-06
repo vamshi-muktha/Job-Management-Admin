@@ -1,0 +1,22 @@
+<% layout('layout/boilerplate') %>
+
+<section class="container my-5">
+  <h2 class="mb-4 text-center">What Our Users Say</h2>
+  <div class="row g-4">
+    <% const testimonials = [
+      { name: "Aarav", role: "Software Engineer", msg: "This site helped me land my dream job within a week!" },
+      { name: "Sana", role: "UI/UX Designer", msg: "I love the clean design and how easy it is to apply for jobs." },
+      { name: "Vikram", role: "Product Manager", msg: "Highly recommend for anyone looking to make a career move." }
+    ]; %>
+
+    <% testimonials.forEach(t => { %>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-4 rounded-4 h-100">
+          <p class="mb-3">"<%= t.msg %>"</p>
+          <h6 class="fw-bold mb-0"><%= t.name %></h6>
+          <small class="text-muted"><%= t.role %></small>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</section>

@@ -1,0 +1,295 @@
+
+
+
+body {
+    background: rgba(251, 251, 255, 1);
+
+    font-family: 'Satoshi Variable', sans-serif;
+  }
+  .top-sec{
+    background: rgba(255, 255, 255, 1);
+    padding: 10px;
+    box-shadow: 0px 0px 14px 0px rgba(198, 191, 191, 0.35);
+
+
+  }
+  .nav-main {
+    width: 890px;
+    height: 80px;
+    border: 1px solid #FCFCFC;
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px 0px rgba(127, 127, 127, 0.3);
+    margin-top: 10px;
+  }
+  
+  .logo {
+    height: 44px;
+    width: 44px;
+  }
+  
+  .nav-items {
+    display: flex;
+    gap: 50px;
+  }
+  
+  .nav-link {
+    color: #000;
+    font-weight: 550;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+  }
+  
+  .nav-link:hover {
+    text-decoration: none;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px 0px rgba(127, 127, 127, 0.3);
+    background-color: #f8f9fa; /* optional subtle background */
+  }
+
+  #createJobButton:hover{
+    transform: scale(1.1);
+  }
+  
+  .create-btn{
+    background: linear-gradient(180deg, #A128FF 0%, #6100AD 113.79%);
+    border-radius: 30px;
+  }
+
+  .nav-section {
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .divider {
+    width: 1px;
+    height: 40px;
+    background-color: #ccc;
+    margin: 0 10px;
+  }
+
+  .inp{
+    background-color: #f8f9fa;
+  }
+
+ .apply-btn{
+    background: rgba(0, 170, 255, 1);
+    color: #ffffff;
+    border-radius: 10px;
+ }
+.job-card{
+    border: none;
+    /* box-shadow: 0px 0px 14px 0px rgba(211, 211, 211, 0.15); */
+
+
+ }
+
+ .hour-badge{
+    width: 75;
+height: 33;
+border-radius: 10px;
+top: 16px;
+left: 222px;
+padding-top: 7px;
+padding-right: 10px;
+padding-bottom: 7px;
+padding-left: 10px;
+gap: 10px;
+background: rgba(176, 217, 255, 1);
+
+
+ }
+
+
+ .card-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+
+
+ .modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 30px;
+    width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 0 14px rgba(211, 211, 211, 0.15);
+  }
+
+
+
+  .modal-content {
+    width: 700px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.15);
+    
+  }
+  
+  .modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .form-input::placeholder,
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4); 
+}
+
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .full-width {
+    margin-bottom: 24px;
+  }
+  
+  .salary-range {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .btn-draft {
+    padding: 10px 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn-publish {
+    padding: 10px 24px;
+    background-color: #0096FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  
+  .hidden {
+    display: none;
+  }
+  .f-label{
+    font-weight: 1.1rem;
+    color:  rgba(99, 99, 99, 1);
+    
+      
+  }
+
+  .login-box{
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    margin-top: 10px;
+  }
+
+
+  .custom-popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999;
+  }
+  
+  .custom-popup.hidden {
+    display: none;
+  }
+  
+  
+
+.my-jobs{
+  height: 38px;
+  margin-top: 30px;
+}
+  
+
+
+/* Container for Salary Range */
+#salarySlider {
+  margin-top: 6px;
+  height: 0.5rem !important;
+  background-color: rgba(95,78,78,0.3) !important; 
+}
+
+/* Base line (track) */
+.ui-slider {
+  background: #ccc; /* light black/gray */
+  border-radius: 4px;
+  height: 6px;
+  position: relative;
+  
+}
+
+/* Selected range (highlighted part) */
+.ui-slider-range {
+  background: rgba(0,0,0,0.7) !important; /* solid black for contrast */
+  height: 8px;       /* make it slightly thicker */
+  top: -1px;         /* center over base line */
+  border-radius: 4px;
+}
+
+/* Thumbs (handles) */
+.ui-slider-handle {
+  width: 16px;
+  height: 16px;
+  background: #000; /* black */
+  border: none;
+  border-radius: 50% !important;
+  cursor: pointer;
+  position: absolute;
+  top: -5px; /* align with range line */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s ease;
+}
+
+.ui-slider-handle:hover {
+  background: #1e1b19 !important;
+}
+
+.ui-corner-all{
+  border-radius: 10px !important;
+}
+
+ 
+  
+  
+  
+  
