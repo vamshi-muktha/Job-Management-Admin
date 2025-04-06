@@ -1,8 +1,6 @@
 require('dotenv').config();
 
-if (process.env.NODE_ENV === 'production') {
-  app.set('trust proxy', 1); // if deployed behind proxy
-}
+
 
 
 const express = require('express');
