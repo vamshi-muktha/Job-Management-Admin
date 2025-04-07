@@ -1,15 +1,14 @@
 
 
-
 body {
-    background: rgba(251, 251, 255, 1);
+  background: rgba(251, 251, 255, 1);
+  font-family: 'Satoshi Variable', sans-serif;
 
-    font-family: 'Satoshi Variable', sans-serif;
-    
-      zoom: 70%; /* 70% for 0.7 look */
-    
-    
-  }
+  transform: scale(0.7);
+  transform-origin: top left;
+  width: 142.8571%; /* 100 / 0.7 to maintain layout */
+}
+
   .top-sec{
     background: rgba(255, 255, 255, 1);
     padding: 10px;
