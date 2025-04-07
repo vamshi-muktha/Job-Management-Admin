@@ -5,6 +5,10 @@ body {
     background: rgba(251, 251, 255, 1);
 
     font-family: 'Satoshi Variable', sans-serif;
+    
+      zoom: 70%; /* 70% for 0.7 look */
+    
+    
   }
   .top-sec{
     background: rgba(255, 255, 255, 1);

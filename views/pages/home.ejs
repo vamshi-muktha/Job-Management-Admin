@@ -1,7 +1,11 @@
 <% layout('layout/boilerplate') %>
-
+<style>
+  .jobs-section{
+    padding: 0px 100px 0px 100px;
+  }
+</style>
 <body>
-  <section class="container my-5">
+  <section class="jobs-section container-fluid my-5">
     <div class="row g-4">
       <% jobs.forEach(job => { %>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">

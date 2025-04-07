@@ -18,11 +18,11 @@
 
           <a class="nav-link" href="/aboutus">About Us</a>
           <a class="nav-link" href="/testimonials">Testimonials</a>
-          <% if (user) { %>
+          
           <!-- Create Job Button -->
           <button id="createJobButton" class="create-btn btn btn-primary">Create
             Jobs</button>
-          <% } %>
+          
 
         </nav>
         <!-- Login Section -->
@@ -40,10 +40,10 @@
           </div>
         </section>
 
-        <% if (user) { %>
+        <!-- <% if (user) { %> -->
         <a type="button" class="my-jobs btn btn-outline-success" href="/my-jobs"
           class="nav-link">My Jobs</a>
-        <% } %>
+        <!-- <% } %> -->
 
       </div>
       <% const minVal = typeof min !== "undefined" ? min : 1; %>
@@ -108,7 +108,7 @@
 
             <div class="col d-flex flex-column align-items-center">
               <label id="salaryRangeText" class="mb-2 fw-medium">
-                Salary Range: ₹<span id="minSalary"><%= minVal %>lpa</span> - ₹<span id="maxSalary"><%= maxVal %>lpa</span>
+                Salary per month: ₹<span id="minSalary"><%= minVal %>lpa</span> - ₹<span id="maxSalary"><%= maxVal %>lpa</span>
               </label>
               
               <form id="salaryForm" action="/searchbysalary" method="get">
@@ -170,7 +170,21 @@
     });
   </script> -->
 
-
+  <script>
+    document.getElementById('createJobButton').addEventListener('click', () => {
+      const isAuthenticated = "<%= typeof user !== 'undefined' ? 'true' : 'false' %>";
+  
+      if (isAuthenticated === 'true') {
+        // Show the modal
+        const modal = document.getElementById('createJobModal');
+        if (modal) modal.classList.remove('hidden');
+      } else {
+        // Redirect to login
+        window.location.href = '/login';
+      }
+    });
+  </script>
+  
 
 <script>
   $(function () {
